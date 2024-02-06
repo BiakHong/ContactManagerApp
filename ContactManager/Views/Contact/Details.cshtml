@@ -1,0 +1,53 @@
+﻿@model ContactManager.Models.Contact
+
+
+@{
+    ViewBag.Title = "Contact Details";
+}
+
+<h3>@ViewBag.Title</h3>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">First Name</dt>
+        <dd class="col-sm-10">@Model.First</dd>
+
+        <!-- Add similar sections for Last, Phone, Email, and Category -->
+
+        <dt class="col-sm-2">Date Added</dt>
+    </dl>
+</div>
+
+
+<table class="table">
+    <tbody>
+        <tr class="table border">
+                <td class="col-3">Name:</td>
+                <td class="col-9">@Model.First @Model.Last</td>
+         </tr>
+        <tr class="table border">
+                <td class="col-3">Phone:</td>
+                <td class="col-9">@Model.Phone</td>
+            </tr>
+        <tr class="table border">
+                <td class="col-3">Email:</td>
+                <td class="col-9">@Model.Email</td>
+            </tr>
+        <tr class="table border">
+                <td class="col-3">Category:</td>
+                <td class="col-9">@Model.Category.Name</td>
+            </tr>
+        <tr class="table border">
+                <td class="col-3">Date added:</td>
+                <td class="col-9">@Model.DateAdded</td>
+            </tr>
+        <tr>
+            <td colspan="2" class="table border">
+            <a asp-action="Edit" asp-route-id="@Model.ContactId" class="btn btn-dark">Edit</a>
+            <a asp-action="Delete" asp-route-id="@Model.ContactId" class="btn btn-dark">Delete</a>
+            <a asp-controller="Home" asp-action="Index"
+               class="btn btn-dark">Home</a>
+             </td>
+            </tr>
+    </tbody>
+</table>

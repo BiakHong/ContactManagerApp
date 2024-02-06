@@ -1,0 +1,52 @@
+﻿@model ContactManager.Models.Contact
+@using ContactManager.Models
+
+@{
+    ViewData["Title"] = ViewData["Title"] ?? "Add/Edit Product";
+}
+
+<h2>@((ViewBag.Action == "Add") ? "Add Product" : "Edit Product")</h2>
+
+<form asp-controller="Contact" asp-action="@((ViewBag.Action == "Add") ? "Add" : "Edit")" method="post" class="form-horizontal mt-2">
+
+    <div class="form-group row mt-2">
+        <label asp-for="First" class="control-label">First Name</label>
+        <div>
+            <input asp-for="First" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group row mt-2">
+        <label asp-for="Last" class="control-label">Last Name</label>
+        <div>
+            <input asp-for="Last" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="Phone" class="control-label">Phone</label>
+        <div>
+            <input asp-for="Phone" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group mt-2">
+        <label asp-for="Email" class="control-label">Email</label>
+        <div>
+            <input asp-for="Email" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId" class="form-control">
+            <option value="">select a genre</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.Name</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-dark mt-2">Save</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-dark mt-2">Cancel</a>
+</form>
